@@ -9,7 +9,10 @@ const httpTrigger: AzureFunction = async function(
   const name = req.query.name;
 
   if (name) {
-    const browser = await playwright.chromium.launch();
+    const browser = await playwright.chromium.launch({
+      dumpio: true,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"]
+    });
     const browserContext = await browser.newContext({
       viewport: { height: 1080, width: 1920 }
     });
