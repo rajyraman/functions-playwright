@@ -47,6 +47,6 @@ RUN apt-get update && apt-get install -y gconf-service \
 
 COPY . /home/site/wwwroot
 
-RUN cd /home/site/wwwroot && \
-    npm install && \
-    npm run build
+RUN cd /home/site/wwwroot && npm install && npm run build
+
+EXPOSE 8080
